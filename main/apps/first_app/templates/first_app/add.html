@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>add plan</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <style>
+        .container-fluid{ padding: 2%;}
+        button{ width: 50%; }
+        form { width: 70%; }
+        h2 { margin-left: 25%; }
+    </style>
+</head>
+<body>
+    <div class = "container-fluid">
+        <div class="row">
+            <h1> create a new wish list item for {{ curr_user.first_name }}</h1>
+            <h2><a href="/logout">logout</a></h2>
+            <h2></h2>
+        </div>
+
+        {% if messages %}
+            <ul class="messages">
+            {% for message in messages %}
+            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+            {% endfor %}
+            </ul>
+        {% endif %}
+
+        <div class="main col-lg-12">
+            <form action='/home/add/new' method='POST'>
+                {% csrf_token %}
+                <h4 class="mb-3" id='add'>add an item : <h4>
+                <div class="col-md-6 mb-3">
+                    <label for="destination">item or product</label>
+                    <input type="text" class="form-control" name="destination" placeholder="" value="">
+                </div>
+                <hr class="mb-4">
+                <button class="btn btn-primary btn-lg" type="submit">add item to wishlist</button>
+            </form>
+            <hr class="mb-4">
+            <form action="/home/back" method="GET">
+                <button class="btn btn-secondary btn-lg" type="submit">home</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

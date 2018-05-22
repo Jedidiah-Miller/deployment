@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>login</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <style>
+        .container-fluid{ padding: 2%; }
+        button{ width: 50%; }
+        ul { list-style-type: none; }
+    </style>
+</head>
+<body>
+    <h1> welcome</h1>
+        {% if messages %}
+        <ul class="messages">
+        {% for message in messages %}
+        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+        {% endfor %}
+        </ul>
+        {% endif %}
+    <div class = "container-fluid">
+            <form action='/create' method='POST'>
+                {% csrf_token %}
+                <h4 class="mb-3" id='add'>register : <h4>
+                <div class="col">
+                    <div class="col-md-6 mb-3">
+                        <label for="firstName">first name</label>
+                        <input type="text" class="form-control" name="first_name" placeholder="" value="{{ first_name | safe }}">
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label for="lastName">last name</label>
+                        <input type="text" class="form-control" name="last_name" placeholder="" value="{{ last_name | safe }}">
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label for="email">username</label>
+                        <input type="text" class="form-control" name="email" placeholder="" value="{{ email | safe}}">
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label for="password">password</label>
+                        <input id="password" type="password" class="form-control" name="password" placeholder="">
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label for="confirm_password">confirm password</label>
+                        <input id="confirm_password" type="password" class="form-control" name="confirm_password" placeholder="">
+                    </div>
+                    <div class="col-md-6 mb-3">
+                            <label for="date_hired">date hired</label>
+                            <input type="date" class="form-control" name="date_hired" placeholder="" value="">
+                        </div>
+                    <button class="btn btn-primary btn-lg" type="submit">register</button>
+                </div>
+            </form>
+            <hr class="mb-4">
+        <form action='/login' method='POST'>
+            {% csrf_token %}
+            <h4 class="mb-3" id='add'>login :  <h4>
+            <div class="col">
+                <div class="col-md-6 mb-3">
+                    <label for="email">username</label>
+                    <input type="text" class="form-control" name="email" placeholder="" value="">
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label for="password">password</label>
+                    <input id="password" type="password" class="form-control" name="password" placeholder="">
+                </div>
+                <button class="btn btn-primary btn-lg" type="submit">login</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

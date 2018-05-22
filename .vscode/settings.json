@@ -1,0 +1,5 @@
+{
+    "python.linting.enabled": false,
+    "python.pythonPath": "/usr/local/opt/python/bin/python3.6",
+    "git.ignoreLimitWarning": true
+}
